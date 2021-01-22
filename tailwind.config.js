@@ -12,6 +12,7 @@ module.exports = {
       'xl': '1.25rem',
       '2xl': '1.5rem',
       '3xl': '1.875rem',
+      '2rem': '2rem',
       '4xl': '2.25rem',
       '5xl': '2.5rem',
       '6xl': '4rem',
@@ -19,6 +20,8 @@ module.exports = {
     },
     extend: {
       lineHeight: {
+        '1.6': '1.6',
+        '1.3': '1.3',
         'tight-s': '1.2',
         'snug': '1.4',
         'normal': '1.5',

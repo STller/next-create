@@ -21,9 +21,9 @@ export default function Layout({ children, home }) {
       <main>{children}</main>
 
       {!home && (
-        <div>
+        <div className="mt-12 mr-0 mb-0">
           <Link href="/">
-            <a>← Back to home</a>
+            <a style={{ color: '#0070f3' }}>← Back to home</a>
           </Link>
         </div>
       )}
