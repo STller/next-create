@@ -4,6 +4,32 @@ import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
+export function getPostData(id: string) {
+  const fullPath = path.join(postsDirectory, `${id}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf-8')
+
+  // use gray-matter to parse the post metadata section
+  const matterResult = matter(fileContents)
+
+  // combine the data with the id
+  return {
+    id,
+    ...matterResult.data
+  }
+}
+
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory)
+
+  return fileNames.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, '')
+      }
+    }
+  })
+}
+
 export function getStoredPostsData() {
   // get file names under posts
   const fileNames = fs.readdirSync(postsDirectory)

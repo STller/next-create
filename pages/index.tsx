@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/layout";
 import { getStoredPostsData } from "../lib/posts";
 
@@ -35,7 +36,9 @@ export default function Home({ allPostsData }) {
         <ul className="">
           {allPostsData.map(({ id, date, title }) => (
             <li key={id} className='mt-0 mr-0 mb-5'>
-              <a style={{ color: '#0070f3' }}>{title}</a>
+              <Link href={`/posts/${id}`}>
+                <a style={{ color: '#0070f3' }}>{title}</a>
+              </Link>
               <br />
               {id}
               <br />

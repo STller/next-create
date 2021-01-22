@@ -14,25 +14,8 @@ export default function Layout({ children, home }) {
       </Head>
 
       <header className="flex flex-col items-center">
-        {home ? (
-          <>
-            <img className="h-32 w-32 rounded-full" src="/images/profile.jpg" alt={name} />
-            <h1 className="font-extrabold my-4 mx-0 text-5xl leading-tight-s">{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <img src="/images/profile.jpg" alt={name} />
-              </a>
-            </Link>
-            <h2>
-              <Link href="/">
-                <a>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        <img className="h-32 w-32 rounded-full" src="/images/profile.jpg" alt={name} />
+        <h1 className="font-extrabold my-4 mx-0 text-5xl leading-tight-s">{name}</h1>
       </header>
 
       <main>{children}</main>
