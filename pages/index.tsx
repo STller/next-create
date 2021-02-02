@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/layout";
+import { RecoilRoot } from 'recoil';
 
 export const siteTitle = "三两首页";
 
@@ -13,11 +14,15 @@ export async function getStaticProps() {
 }
 
 export default function Home() {
+
   return (
-    <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-    </Layout>
+    <RecoilRoot>
+      <Layout>
+        <Head>
+          <title>{siteTitle}</title>
+        </Head>
+        Index
+      </Layout>
+    </RecoilRoot>
   );
 }

@@ -1,10 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { atom, useRecoilState } from "recoil";
 
 export default function Layout({ children }) {
+  const activeTab = atom({
+    key: 'selectedActiveTab',
+    default: 'home'
+  })
   const [sectionHeight, setSectionHeight] = useState(0);
-  const [selected, setSelected] = useState("home");
+  const [selected, setSelected] = useRecoilState(activeTab);
   useEffect(() => {
     const { clientHeight } = document.documentElement;
     setSectionHeight(clientHeight - 92);
@@ -51,110 +55,101 @@ export default function Layout({ children }) {
         <ul className="flex justify-between h-full">
           {["home", "brand", "join", "product"].map((item: string) => {
             return (
-              <li key={item} className="flex flex-col flex-auto justify-center items-center">
+              <li
+                key={item}
+                className="flex flex-col flex-auto justify-center items-center"
+              >
                 {item === "home" && (
-                  <Link href="/">
-                    <a
-                      style={{ color: selected === "home" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "home" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "home"
-                                ? "/images/home_select.png"
-                                : "/images/home_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>
-                        首页
-                      </span>
-                    </a>
-                  </Link>
+                  <a
+                    onClick={() => setSelected("home")}
+                    style={{ color: selected === "home" ? "" : "#595757" }}
+                    className="text-12px text-red flex flex-col items-center"
+                  >
+                    {item === "home" && (
+                      <div style={{ width: "17.5px", height: "17.5px" }}>
+                        <Image
+                          src={
+                            selected === "home"
+                              ? "/images/home_select.png"
+                              : "/images/home_none.png"
+                          }
+                          alt="首页"
+                          width={17.5}
+                          height={17.5}
+                        />
+                      </div>
+                    )}
+                    <span>首页</span>
+                  </a>
                 )}
                 {item === "brand" && (
-                  <Link href="/brand">
-                    <a
-                      style={{ color: selected === "brand" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "brand" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "brand"
-                                ? "/images/brand_select.png"
-                                : "/images/brand_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>
-                        品牌
-                      </span>
-                    </a>
-                  </Link>
+                  <a
+                    onClick={() => setSelected("brand")}
+                    style={{ color: selected === "brand" ? "" : "#595757" }}
+                    className="text-12px text-red flex flex-col items-center"
+                  >
+                    {item === "brand" && (
+                      <div style={{ width: "17.5px", height: "17.5px" }}>
+                        <Image
+                          src={
+                            selected === "brand"
+                              ? "/images/brand_select.png"
+                              : "/images/brand_none.png"
+                          }
+                          alt="首页"
+                          width={17.5}
+                          height={17.5}
+                        />
+                      </div>
+                    )}
+                    <span>品牌</span>
+                  </a>
                 )}
                 {item === "join" && (
-                  <Link href="/">
-                    <a
-                      style={{ color: selected === "join" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "join" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "join"
-                                ? "/images/JoinIn_select.png"
-                                : "/images/JoinIn_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>
-                        加盟
-                      </span>
-                    </a>
-                  </Link>
+                  <a
+                    onClick={() => setSelected("join")}
+                    style={{ color: selected === "join" ? "" : "#595757" }}
+                    className="text-12px text-red flex flex-col items-center"
+                  >
+                    {item === "join" && (
+                      <div style={{ width: "17.5px", height: "17.5px" }}>
+                        <Image
+                          src={
+                            selected === "join"
+                              ? "/images/JoinIn_select.png"
+                              : "/images/JoinIn_none.png"
+                          }
+                          alt="首页"
+                          width={17.5}
+                          height={17.5}
+                        />
+                      </div>
+                    )}
+                    <span>加盟</span>
+                  </a>
                 )}
                 {item === "product" && (
-                  <Link href="/">
-                    <a
-                      style={{ color: selected === "product" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "product" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "product"
-                                ? "/images/product_select.png"
-                                : "/images/product_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>
-                        产品
-                      </span>
-                    </a>
-                  </Link>
+                  <a
+                    onClick={() => setSelected("product")}
+                    style={{ color: selected === "product" ? "" : "#595757" }}
+                    className="text-12px text-red flex flex-col items-center"
+                  >
+                    {item === "product" && (
+                      <div style={{ width: "17.5px", height: "17.5px" }}>
+                        <Image
+                          src={
+                            selected === "product"
+                              ? "/images/product_select.png"
+                              : "/images/product_none.png"
+                          }
+                          alt="首页"
+                          width={17.5}
+                          height={17.5}
+                        />
+                      </div>
+                    )}
+                    <span>产品</span>
+                  </a>
                 )}
               </li>
             );
