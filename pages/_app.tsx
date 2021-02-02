@@ -2,13 +2,18 @@ import "../styles/globals.css";
 import "swiper/swiper.scss";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { activeTab } from "../components/recoil";
 import { RecoilRoot } from "recoil";
+import Link from 'next/link';
 
 export default function MyApp({ Component, pageProps }) {
   const [sectionHeight, setSectionHeight] = useState(0);
   const [selected, setSelected] = useState('home');
+  const tabList = [
+    {title: 'home', label: '首页'},
+    {title: 'brand', label: '品牌'},
+    {title: 'join', label: '加盟'},
+    {title: 'product', label: '产品'},
+  ];
 
   useEffect(() => {
     const { clientHeight } = document.documentElement;
@@ -47,6 +52,7 @@ export default function MyApp({ Component, pageProps }) {
           style={{ height: `${sectionHeight}px` }}
           className="overflow-auto"
         >
+          {/* 子组件在这里插入 */}
           <Component {...pageProps} />
         </section>
         <footer
@@ -56,25 +62,25 @@ export default function MyApp({ Component, pageProps }) {
           }}
         >
           <ul className="flex justify-between h-full">
-            {["home", "brand", "join", "product"].map((item: string) => {
+            {tabList.map((item: {title:string, label: string}) => {
               return (
                 <li
-                  onClick={() => setSelected(item)}
-                  key={item}
+                  onClick={() => setSelected(item.title)}
+                  key={item.title}
                   className="flex flex-col flex-auto justify-center items-center"
                 >
-                  {item === "home" && (
+                  <Link href={item.title === 'home' ? '/' : item.title}>
                     <a
-                      style={{ color: selected === "home" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
+                      style={{ color: selected === item.title ? "" : "#595757" }}
+                      className="text-12px text-red flex flex-col justify-center items-center w-full h-full"
                     >
-                      {item === "home" && (
+                      {item === item && (
                         <div style={{ width: "17.5px", height: "17.5px" }}>
                           <Image
                             src={
-                              selected === "home"
-                                ? "/images/home_select.png"
-                                : "/images/home_none.png"
+                              selected === item.title
+                                ? `/images/${item.title}_select.png`
+                                : `/images/${item.title}_none.png`
                             }
                             alt="首页"
                             width={17.5}
@@ -82,75 +88,9 @@ export default function MyApp({ Component, pageProps }) {
                           />
                         </div>
                       )}
-                      <span>首页</span>
+                      <span>{item.label}</span>
                     </a>
-                  )}
-                  {item === "brand" && (
-                    <a
-                      style={{ color: selected === "brand" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "brand" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "brand"
-                                ? "/images/brand_select.png"
-                                : "/images/brand_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>品牌</span>
-                    </a>
-                  )}
-                  {item === "join" && (
-                    <a
-                      style={{ color: selected === "join" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "join" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "join"
-                                ? "/images/JoinIn_select.png"
-                                : "/images/JoinIn_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>加盟</span>
-                    </a>
-                  )}
-                  {item === "product" && (
-                    <a
-                      style={{ color: selected === "product" ? "" : "#595757" }}
-                      className="text-12px text-red flex flex-col items-center"
-                    >
-                      {item === "product" && (
-                        <div style={{ width: "17.5px", height: "17.5px" }}>
-                          <Image
-                            src={
-                              selected === "product"
-                                ? "/images/product_select.png"
-                                : "/images/product_none.png"
-                            }
-                            alt="首页"
-                            width={17.5}
-                            height={17.5}
-                          />
-                        </div>
-                      )}
-                      <span>产品</span>
-                    </a>
-                  )}
+                  </Link>
                 </li>
               );
             })}
