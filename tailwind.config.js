@@ -2,10 +2,12 @@ module.exports = {
   purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    colors: {
+      'red': '#E42832'
+    },
     fontSize: {
-      'xs': '.75rem',
+      '12px': '.75rem',
       'sm': '.875rem',
-      'tiny': '.875rem',
       'base': '1rem',
       'lg': '1.125rem',
       'xl-s': '1.2rem',
