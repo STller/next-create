@@ -52,96 +52,110 @@ export default function Layout({ children }) {
           {["home", "brand", "join", "product"].map((item: string) => {
             return (
               <li key={item} className="flex flex-col flex-auto justify-center items-center">
-                <div style={{ width: "17.5px", height: "17.5px" }}>
-                  {item === "home" && (
-                    <Image
-                      src={
-                        selected === "home"
-                          ? "/images/home_select.png"
-                          : "/images/home_none.png"
-                      }
-                      alt="首页"
-                      width={17.5}
-                      height={17.5}
-                    />
-                  )}
-                  {item === "brand" && (
-                    <Image
-                      src={
-                        selected === "brand"
-                          ? "/images/brand_select.png"
-                          : "/images/brand_none.png"
-                      }
-                      alt="品牌"
-                      width={17.5}
-                      height={17.5}
-                    />
-                  )}
-                  {item === "join" && (
-                    <Image
-                      src={
-                        selected === "join"
-                          ? "/images/JoinIn_select.png"
-                          : "/images/JoinIn_none.png"
-                      }
-                      alt="加盟"
-                      width={17.5}
-                      height={17.5}
-                    />
-                  )}
-                  {item === "product" && (
-                    <Image
-                      src={
-                        selected === "product"
-                          ? "/images/product_select.png"
-                          : "/images/product_none.png"
-                      }
-                      alt="产品"
-                      width={17.5}
-                      height={17.5}
-                    />
-                  )}
-                </div>
                 {item === "home" && (
                   <Link href="/">
                     <a
                       style={{ color: selected === "home" ? "" : "#595757" }}
-                      className="text-12px text-red"
+                      className="text-12px text-red flex flex-col items-center"
                     >
-                      首页
+                      {item === "home" && (
+                        <div style={{ width: "17.5px", height: "17.5px" }}>
+                          <Image
+                            src={
+                              selected === "home"
+                                ? "/images/home_select.png"
+                                : "/images/home_none.png"
+                            }
+                            alt="首页"
+                            width={17.5}
+                            height={17.5}
+                          />
+                        </div>
+                      )}
+                      <span>
+                        首页
+                      </span>
                     </a>
                   </Link>
                 )}
                 {item === "brand" && (
                   <Link href="/brand">
-                  <a
-                    style={{ color: selected === "brand" ? "" : "#595757" }}
-                    className="text-12px text-red"
-                  >
-                    品牌
-                  </a>
-                </Link>
-              )}
+                    <a
+                      style={{ color: selected === "brand" ? "" : "#595757" }}
+                      className="text-12px text-red flex flex-col items-center"
+                    >
+                      {item === "brand" && (
+                        <div style={{ width: "17.5px", height: "17.5px" }}>
+                          <Image
+                            src={
+                              selected === "brand"
+                                ? "/images/brand_select.png"
+                                : "/images/brand_none.png"
+                            }
+                            alt="首页"
+                            width={17.5}
+                            height={17.5}
+                          />
+                        </div>
+                      )}
+                      <span>
+                        品牌
+                      </span>
+                    </a>
+                  </Link>
+                )}
                 {item === "join" && (
                   <Link href="/">
-                  <a
-                    style={{ color: selected === "join" ? "" : "#595757" }}
-                    className="text-12px text-red"
-                  >
-                    加盟
-                  </a>
-                </Link>
-              )}
+                    <a
+                      style={{ color: selected === "join" ? "" : "#595757" }}
+                      className="text-12px text-red flex flex-col items-center"
+                    >
+                      {item === "join" && (
+                        <div style={{ width: "17.5px", height: "17.5px" }}>
+                          <Image
+                            src={
+                              selected === "join"
+                                ? "/images/JoinIn_select.png"
+                                : "/images/JoinIn_none.png"
+                            }
+                            alt="首页"
+                            width={17.5}
+                            height={17.5}
+                          />
+                        </div>
+                      )}
+                      <span>
+                        加盟
+                      </span>
+                    </a>
+                  </Link>
+                )}
                 {item === "product" && (
                   <Link href="/">
-                  <a
-                    style={{ color: selected === "product" ? "" : "#595757" }}
-                    className="text-12px text-red"
-                  >
-                    产品
-                  </a>
-                </Link>
-              )}
+                    <a
+                      style={{ color: selected === "product" ? "" : "#595757" }}
+                      className="text-12px text-red flex flex-col items-center"
+                    >
+                      {item === "product" && (
+                        <div style={{ width: "17.5px", height: "17.5px" }}>
+                          <Image
+                            src={
+                              selected === "product"
+                                ? "/images/product_select.png"
+                                : "/images/product_none.png"
+                            }
+                            alt="首页"
+                            width={17.5}
+                            height={17.5}
+                          />
+                        </div>
+                      )}
+                      <span>
+                        产品
+                      </span>
+                    </a>
+                  </Link>
+                )}
               </li>
             );
           })}
