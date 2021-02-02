@@ -1,18 +1,17 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { atom, useRecoilState } from "recoil";
+import {activeTab} from './recoil';
 
 export default function Layout({ children }) {
-  const activeTab = atom({
-    key: 'selectedActiveTab',
-    default: 'home'
-  })
   const [sectionHeight, setSectionHeight] = useState(0);
   const [selected, setSelected] = useRecoilState(activeTab);
+
   useEffect(() => {
     const { clientHeight } = document.documentElement;
     setSectionHeight(clientHeight - 92);
   }, []);
+
   return (
     <div className="flex flex-col h-full">
       <header
@@ -56,12 +55,12 @@ export default function Layout({ children }) {
           {["home", "brand", "join", "product"].map((item: string) => {
             return (
               <li
+              onClick={() => setSelected(item)}
                 key={item}
                 className="flex flex-col flex-auto justify-center items-center"
               >
                 {item === "home" && (
                   <a
-                    onClick={() => setSelected("home")}
                     style={{ color: selected === "home" ? "" : "#595757" }}
                     className="text-12px text-red flex flex-col items-center"
                   >
@@ -84,7 +83,6 @@ export default function Layout({ children }) {
                 )}
                 {item === "brand" && (
                   <a
-                    onClick={() => setSelected("brand")}
                     style={{ color: selected === "brand" ? "" : "#595757" }}
                     className="text-12px text-red flex flex-col items-center"
                   >
@@ -107,7 +105,6 @@ export default function Layout({ children }) {
                 )}
                 {item === "join" && (
                   <a
-                    onClick={() => setSelected("join")}
                     style={{ color: selected === "join" ? "" : "#595757" }}
                     className="text-12px text-red flex flex-col items-center"
                   >
@@ -130,7 +127,6 @@ export default function Layout({ children }) {
                 )}
                 {item === "product" && (
                   <a
-                    onClick={() => setSelected("product")}
                     style={{ color: selected === "product" ? "" : "#595757" }}
                     className="text-12px text-red flex flex-col items-center"
                   >
