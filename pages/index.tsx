@@ -1,12 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/layout";
-import { getStoredPostsData } from "../lib/posts";
 
 export const siteTitle = "Next.js Sample Website";
 
 export async function getStaticProps() {
-  const allPostsData = getStoredPostsData();
+  const allPostsData = [];
   return {
     props: {
       allPostsData,
