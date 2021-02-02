@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { atom, useRecoilState } from "recoil";
-import {activeTab} from './recoil';
+import { useRecoilState } from "recoil";
+import { activeTab } from "./recoil";
 
 export default function Layout({ children }) {
   const [sectionHeight, setSectionHeight] = useState(0);
@@ -55,7 +55,7 @@ export default function Layout({ children }) {
           {["home", "brand", "join", "product"].map((item: string) => {
             return (
               <li
-              onClick={() => setSelected(item)}
+                onClick={() => setSelected(item)}
                 key={item}
                 className="flex flex-col flex-auto justify-center items-center"
               >
