@@ -1,18 +1,19 @@
 import "../styles/globals.css";
-import "swiper/swiper.scss";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
-import Link from 'next/link';
+import Link from "next/link";
+// import 'antd-mobile/dist/antd-mobile.css'
+
 
 export default function MyApp({ Component, pageProps }) {
   const [sectionHeight, setSectionHeight] = useState(0);
-  const [selected, setSelected] = useState('home');
+  const [selected, setSelected] = useState("home");
   const tabList = [
-    {title: 'home', label: '首页'},
-    {title: 'brand', label: '品牌'},
-    {title: 'join', label: '加盟'},
-    {title: 'product', label: '产品'},
+    { title: "home", label: "首页" },
+    { title: "brand", label: "品牌" },
+    { title: "join", label: "加盟" },
+    { title: "product", label: "产品" },
   ];
 
   useEffect(() => {
@@ -62,19 +63,21 @@ export default function MyApp({ Component, pageProps }) {
           }}
         >
           <ul className="flex justify-between h-full">
-            {tabList.map((item: {title:string, label: string}) => {
+            {tabList.map((item: { title: string; label: string }) => {
               return (
                 <li
                   onClick={() => setSelected(item.title)}
                   key={item.title}
                   className="flex flex-col flex-auto justify-center items-center"
                 >
-                  <Link href={item.title === 'home' ? '/' : item.title}>
+                  <Link href={item.title === "home" ? "/" : `/${item.title}`}>
                     <a
-                      style={{ color: selected === item.title ? "" : "#595757" }}
+                      style={{
+                        color: selected === item.title ? "" : "#595757",
+                      }}
                       className="text-12px text-red flex flex-col justify-center items-center w-full h-full"
                     >
-                      {item === item && (
+                      {
                         <div style={{ width: "17.5px", height: "17.5px" }}>
                           <Image
                             src={
@@ -87,7 +90,7 @@ export default function MyApp({ Component, pageProps }) {
                             height={17.5}
                           />
                         </div>
-                      )}
+                      }
                       <span>{item.label}</span>
                     </a>
                   </Link>

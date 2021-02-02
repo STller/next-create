@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     colors: {
       'red': '#E42832',
-      'white': '#FFFFFF'
+      'white': '#FFFFFF',
+      'gold': '#9E7C4F',
+      'grey': '#B5B5B5'
     },
     fontSize: {
       '12px': '.75rem',
