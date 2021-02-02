@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
   const [sectionHeight, setSectionHeight] = useState(0);
   const [selected, setSelected] = useState("home");
   useEffect(() => {
@@ -35,7 +36,12 @@ export default function Layout({ children, home }) {
           </a>
         </div>
       </header>
-      <section style={{ height: `${sectionHeight}px` }}>Section</section>
+      <section
+        style={{ height: `${sectionHeight}px` }}
+        className="overflow-auto"
+      >
+        {children}
+      </section>
       <footer
         style={{
           height: "50px",
@@ -45,7 +51,7 @@ export default function Layout({ children, home }) {
         <ul className="flex justify-between h-full">
           {["home", "brand", "join", "product"].map((item: string) => {
             return (
-              <li className="flex flex-col flex-auto justify-center items-center">
+              <li key={item} className="flex flex-col flex-auto justify-center items-center">
                 <div style={{ width: "17.5px", height: "17.5px" }}>
                   {item === "home" && (
                     <Image
@@ -96,38 +102,46 @@ export default function Layout({ children, home }) {
                     />
                   )}
                 </div>
-                {
-                  item === 'home' && <span
-                    style={{ color: selected === "home" ? "" : "#595757" }}
-                    className="text-12px text-red"
-                  >
-                    首页
-                  </span>
-                }
-                {
-                  item === 'brand' && <span
+                {item === "home" && (
+                  <Link href="/">
+                    <a
+                      style={{ color: selected === "home" ? "" : "#595757" }}
+                      className="text-12px text-red"
+                    >
+                      首页
+                    </a>
+                  </Link>
+                )}
+                {item === "brand" && (
+                  <Link href="/brand">
+                  <a
                     style={{ color: selected === "brand" ? "" : "#595757" }}
                     className="text-12px text-red"
                   >
                     品牌
-                  </span>
-                }
-                {
-                  item === 'join' && <span
+                  </a>
+                </Link>
+              )}
+                {item === "join" && (
+                  <Link href="/">
+                  <a
                     style={{ color: selected === "join" ? "" : "#595757" }}
                     className="text-12px text-red"
                   >
                     加盟
-                  </span>
-                }
-                {
-                  item === 'product' && <span
+                  </a>
+                </Link>
+              )}
+                {item === "product" && (
+                  <Link href="/">
+                  <a
                     style={{ color: selected === "product" ? "" : "#595757" }}
                     className="text-12px text-red"
                   >
                     产品
-                  </span>
-                }
+                  </a>
+                </Link>
+              )}
               </li>
             );
           })}

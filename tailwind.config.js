@@ -3,7 +3,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      'red': '#E42832'
+      'red': '#E42832',
+      'white': '#FFFFFF'
     },
     fontSize: {
       '12px': '.75rem',
