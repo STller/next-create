@@ -8,7 +8,8 @@ module.exports = {
       'gold': '#9E7C4F',
       'grey': '#B5B5B5',
       'postTitle': '#999999',
-      'input': '#323232'
+      'input': '#323232',
+      'text': '#4C4948'
     },
     fontSize: {
       '12px': '.75rem',
