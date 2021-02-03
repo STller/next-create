@@ -26,18 +26,24 @@ export async function getStaticProps() {
 export default function Home({ bannerList }) {
   const [imgHeight, setImgHeight] = useState("237px");
   useEffect(() => {
-    //监听屏幕方向
-    window.onorientationchange = function () {
-      switch (window.orientation) {
-        case -90:
-        case 90:
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+      if (window.orientation === 180 || window.orientation === 0) { 
+        setImgHeight("454px");
+      } 
+      if (window.orientation === 90 || window.orientation === -90 ){ 
+        setImgHeight("237px");
+      } 
+    }, false); 
+    return () => {
+      window.removeEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        if (window.orientation === 180 || window.orientation === 0) { 
           setImgHeight("454px");
-        case 0:
-        case 180:
+        } 
+        if (window.orientation === 90 || window.orientation === -90 ){ 
           setImgHeight("237px");
-          break;
-      }
-    };
+        } 
+      }, false); 
+    }
   }, []);
   return (
     <>
