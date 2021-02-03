@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { REQUEST } from "../api/service";
 import Image from "next/image";
-import { Carousel } from 'antd-mobile';
+import { Carousel } from "antd-mobile";
 import { useEffect, useState } from "react";
 
 export const siteTitle = "三两首页";
@@ -24,6 +24,21 @@ export async function getStaticProps() {
 }
 
 export default function Home({ bannerList }) {
+  const [imgHeight, setImgHeight] = useState("237px");
+  useEffect(() => {
+    //监听屏幕方向
+    window.onorientationchange = function () {
+      switch (window.orientation) {
+        case -90:
+        case 90:
+          setImgHeight("454px");
+        case 0:
+        case 180:
+          setImgHeight("237px");
+          break;
+      }
+    };
+  }, []);
   return (
     <>
       <Head>
@@ -35,23 +50,20 @@ export default function Home({ bannerList }) {
           style={{ borderBottom: "7.5px solid #ECECEC" }}
           className="carousel"
         >
-        <Carousel
-          autoplay={false}
-          infinite
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => console.log('slide to', index)}
-        >
-          {bannerList.map(val => (
-            <div key={val.url} style={{width: '100%', height: '237px'}}>
-              <Image
-                src={val.url}
-                alt="BannerImg"
-                layout="fill"
-              />
-            </div>
-          ))}
-        </Carousel>
-
+          <Carousel
+            autoplay={false}
+            infinite
+            beforeChange={(from, to) =>
+              console.log(`slide from ${from} to ${to}`)
+            }
+            afterChange={(index) => console.log("slide to", index)}
+          >
+            {bannerList.map((val) => (
+              <div key={val.url} style={{ width: "100%", height: imgHeight }}>
+                <Image src={val.url} alt="BannerImg" layout="fill" />
+              </div>
+            ))}
+          </Carousel>
         </div>
         <div style={{ padding: "0 15.5px" }} className="background">
           <div
