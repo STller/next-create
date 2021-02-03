@@ -21,26 +21,29 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
-      if (window.orientation === 180 || window.orientation === 0) { 
-        const { clientHeight } = document.documentElement;
-        setSectionHeight(clientHeight - 92);
-    
-        alert(clientHeight);
-      } 
-      if (window.orientation === 90 || window.orientation === -90 ){ 
-        const { clientHeight } = document.documentElement;
-        setSectionHeight(clientHeight - 92);
-    
-        alert(clientHeight);
-      } 
-    }, false); 
-  }, [])
+    window.addEventListener(
+      "onorientationchange" in window ? "orientationchange" : "resize",
+      function () {
+        if (window.orientation === 180 || window.orientation === 0) {
+          const { clientHeight } = document.documentElement;
+          setSectionHeight(clientHeight - 92);
+        }
+        if (window.orientation === 90 || window.orientation === -90) {
+          const { clientHeight } = document.documentElement;
+          setSectionHeight(clientHeight - 92);
+        }
+      },
+      false
+    );
+  }, []);
 
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
       </Head>
 
       <RecoilRoot>
