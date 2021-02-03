@@ -41,7 +41,7 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <div style={{ height: myAppHeight === 0 ? "100%" : myAppHeight }}>
+    <div style={{ height: myAppHeight === 0 ? "100%" : `${myAppHeight}px` }}>
       <Head>
         <meta
           name="viewport"
