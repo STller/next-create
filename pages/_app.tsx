@@ -6,6 +6,7 @@ import Link from "next/link";
 import Head from "next/head";
 
 export default function MyApp({ Component, pageProps }) {
+  const [myAppHeight, setMyAppHeight] = useState(0);
   const [sectionHeight, setSectionHeight] = useState(0);
   const [selected, setSelected] = useState("home");
   const tabList = [
@@ -26,10 +27,12 @@ export default function MyApp({ Component, pageProps }) {
       function () {
         if (window.orientation === 180 || window.orientation === 0) {
           const { clientHeight } = document.documentElement;
+          setMyAppHeight(clientHeight);
           setSectionHeight(clientHeight - 92);
         }
         if (window.orientation === 90 || window.orientation === -90) {
           const { clientHeight } = document.documentElement;
+          setMyAppHeight(clientHeight);
           setSectionHeight(clientHeight - 92);
         }
       },
@@ -38,7 +41,7 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <div style={{height: '100%'}}>
+    <div style={{ height: myAppHeight === 0 ? "100%" : myAppHeight }}>
       <Head>
         <meta
           name="viewport"
