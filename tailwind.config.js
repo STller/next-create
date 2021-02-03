@@ -6,7 +6,9 @@ module.exports = {
       'red': '#E42832',
       'white': '#FFFFFF',
       'gold': '#9E7C4F',
-      'grey': '#B5B5B5'
+      'grey': '#B5B5B5',
+      'postTitle': '#999999',
+      'input': '#323232'
     },
     fontSize: {
       '12px': '.75rem',

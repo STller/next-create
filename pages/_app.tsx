@@ -24,7 +24,10 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
 
       <RecoilRoot>
-        <div style={{paddingTop: '42px', paddingBottom: '50px'}} className="flex flex-col h-full relative">
+        <div
+          style={{ paddingTop: "42px", paddingBottom: "50px" }}
+          className="flex flex-col h-full relative"
+        >
           <header
             style={{ height: "42px", backgroundColor: "#E42823" }}
             className="h-32 flex justify-between items-center fixed top-0 w-full z-10"
@@ -50,9 +53,7 @@ export default function MyApp({ Component, pageProps }) {
               </a>
             </div>
           </header>
-          <section
-            style={{ height: '100%' }}
-          >
+          <section style={{ height: "100%" }}>
             {/* 子组件在这里插入 */}
             <Component {...pageProps} />
           </section>
@@ -60,7 +61,7 @@ export default function MyApp({ Component, pageProps }) {
             style={{
               height: "50px",
               borderTop: "1px solid #d9d9d9",
-              background: '#ffffff'
+              background: "#ffffff",
             }}
             className="fixed w-full z-10 bottom-0"
           >

@@ -1,8 +1,10 @@
 import Head from "next/head";
 import { REQUEST } from "../api/service";
 import Image from "next/image";
-import { Carousel } from "antd-mobile";
 import { useEffect, useState } from "react";
+import PostForm from '../components/postForm/index';
+import Carousel from "antd-mobile/lib/carousel/index";
+import 'antd-mobile/lib/carousel/style/index.css';
 
 export const siteTitle = "三两首页";
 
@@ -26,24 +28,32 @@ export async function getStaticProps() {
 export default function Home({ bannerList }) {
   const [imgHeight, setImgHeight] = useState("237px");
   useEffect(() => {
-    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
-      if (window.orientation === 180 || window.orientation === 0) { 
-        setImgHeight("237px");
-      } 
-      if (window.orientation === 90 || window.orientation === -90 ){ 
-        setImgHeight("454px");
-      } 
-    }, false); 
-    return () => {
-      window.removeEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
-        if (window.orientation === 180 || window.orientation === 0) { 
+    window.addEventListener(
+      "onorientationchange" in window ? "orientationchange" : "resize",
+      function () {
+        if (window.orientation === 180 || window.orientation === 0) {
           setImgHeight("237px");
-        } 
-        if (window.orientation === 90 || window.orientation === -90 ){ 
+        }
+        if (window.orientation === 90 || window.orientation === -90) {
           setImgHeight("454px");
-        } 
-        }, false); 
-    }
+        }
+      },
+      false
+    );
+    return () => {
+      window.removeEventListener(
+        "onorientationchange" in window ? "orientationchange" : "resize",
+        function () {
+          if (window.orientation === 180 || window.orientation === 0) {
+            setImgHeight("237px");
+          }
+          if (window.orientation === 90 || window.orientation === -90) {
+            setImgHeight("454px");
+          }
+        },
+        false
+      );
+    };
   }, []);
   return (
     <>
@@ -53,7 +63,7 @@ export default function Home({ bannerList }) {
 
       <div className="home">
         <div
-          style={{ borderBottom: "7.5px solid #ECECEC", height: imgHeight}}
+          style={{ borderBottom: "7.5px solid #ECECEC", height: imgHeight }}
           className="carousel w-full"
         >
           <Carousel
@@ -71,7 +81,10 @@ export default function Home({ bannerList }) {
             ))}
           </Carousel>
         </div>
-        <div style={{ padding: "0 15.5px" }} className="background">
+        <div
+          style={{ padding: "0 15.5px", borderBottom: "7.5px solid #ECECEC", paddingBottom: '25px' }}
+          className="background"
+        >
           <div
             style={{ marginTop: "22.5px", marginBottom: "17.0px" }}
             className="title flex justify-between items-center"
@@ -84,12 +97,10 @@ export default function Home({ bannerList }) {
           <div className="video">Video</div>
           <div className="content">
             <span>
-              {" "}
               包子是中国的传统特色小吃，具有特殊的传承意义，在快节奏的今天，三两更愿意慢下来专心做好食。{" "}
             </span>
             <br />
             <span>
-              {" "}
               传统手作、热乎现蒸，数以百次访店，1000次的反复测试，只为找到黄金配比、最佳口感。{" "}
             </span>
             <br />
@@ -110,7 +121,7 @@ export default function Home({ bannerList }) {
                 >
                   <span className="text-gold text-2rem">{item.title}</span>
                   <span
-                    className="block text-center bg-grey"
+                    className="block text-center bg-grey text-white text-sm h-7 leading-7"
                     style={{
                       width: "142.5px",
                       marginTop: "7.5px",
@@ -123,6 +134,9 @@ export default function Home({ bannerList }) {
               );
             })}
           </ul>
+        </div>
+        <div className="postForm">
+          <PostForm />
         </div>
       </div>
     </>
