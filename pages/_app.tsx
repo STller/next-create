@@ -24,13 +24,13 @@ export default function MyApp({ Component, pageProps }) {
     window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
       if (window.orientation === 180 || window.orientation === 0) { 
         const { clientHeight } = document.documentElement;
-        // setSectionHeight(clientHeight - 92);
+        setSectionHeight(clientHeight - 92);
     
         alert(clientHeight);
       } 
       if (window.orientation === 90 || window.orientation === -90 ){ 
         const { clientHeight } = document.documentElement;
-        // setSectionHeight(clientHeight - 92);
+        setSectionHeight(clientHeight - 92);
     
         alert(clientHeight);
       } 
