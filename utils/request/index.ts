@@ -30,7 +30,7 @@ axios.interceptors.response.use(
  * @param url 请求得url地址
  * @param params 请求得携带参数
  */
-export function get(url, params) {
+export function get(url, params=null) {
   return new Promise((resolve, reject) => {
     axios.get(url, {params}).then(res => resolve(res.data)).catch(err => reject(err.data))
   })

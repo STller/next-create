@@ -17,7 +17,7 @@ export const REQUEST = {
     get(baseUrl + "/journalism/background_set", parameter),
   /**
    *门店信息 */
-  storeAddress: (parameter) => get(baseUrl + "/salesroom/room_show", parameter),
+  storeAddress: () => get(baseUrl + "/salesroom/room_show"),
   /**
    * 产品信息*/
   productList: (parameter) => get(baseUrl + "/journalism/product", parameter),
