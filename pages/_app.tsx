@@ -6,8 +6,6 @@ import Link from "next/link";
 import Head from "next/head";
 
 export default function MyApp({ Component, pageProps }) {
-  const [myAppHeight, setMyAppHeight] = useState(0);
-  const [sectionHeight, setSectionHeight] = useState(0);
   const [selected, setSelected] = useState("home");
   const tabList = [
     { title: "home", label: "首页" },
@@ -16,32 +14,8 @@ export default function MyApp({ Component, pageProps }) {
     { title: "product", label: "产品" },
   ];
 
-  useEffect(() => {
-    const { clientHeight } = document.documentElement;
-    setSectionHeight(clientHeight - 92);
-  }, []);
-
-  useEffect(() => {
-    // window.addEventListener(
-    //   "onorientationchange" in window ? "orientationchange" : "resize",
-    //   function () {
-    //     if (window.orientation === 180 || window.orientation === 0) {
-    //       const { clientHeight } = document.documentElement;
-    //       setMyAppHeight(clientHeight);
-    //       setSectionHeight(clientHeight - 92);
-    //     }
-    //     if (window.orientation === 90 || window.orientation === -90) {
-    //       const { clientHeight } = document.documentElement;
-    //       setMyAppHeight(clientHeight);
-    //       setSectionHeight(clientHeight - 92);
-    //     }
-    //   },
-    //   false
-    // );
-  }, []);
-
   return (
-    <div style={{ height: '100%' }}>
+    <div>
       <Head>
         <meta
           name="viewport"
@@ -50,10 +24,10 @@ export default function MyApp({ Component, pageProps }) {
       </Head>
 
       <RecoilRoot>
-        <div className="flex flex-col h-full">
+        <div style={{paddingTop: '42px', paddingBottom: '50px'}} className="flex flex-col h-full relative">
           <header
             style={{ height: "42px", backgroundColor: "#E42823" }}
-            className="h-32 flex justify-between items-center"
+            className="h-32 flex justify-between items-center fixed top-0 w-full z-10"
           >
             <div
               style={{ paddingLeft: "17px" }}
@@ -77,8 +51,7 @@ export default function MyApp({ Component, pageProps }) {
             </div>
           </header>
           <section
-            style={{ height: `${sectionHeight}px` }}
-            className="overflow-auto"
+            style={{ height: '100%' }}
           >
             {/* 子组件在这里插入 */}
             <Component {...pageProps} />
@@ -87,7 +60,9 @@ export default function MyApp({ Component, pageProps }) {
             style={{
               height: "50px",
               borderTop: "1px solid #d9d9d9",
+              background: '#ffffff'
             }}
+            className="fixed w-full z-10 bottom-0"
           >
             <ul className="flex justify-between h-full">
               {tabList.map((item: { title: string; label: string }) => {
