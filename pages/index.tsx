@@ -24,7 +24,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ bannerList }) {
-  console.log(bannerList);
   return (
     <>
       <Head>
@@ -43,11 +42,11 @@ export default function Home({ bannerList }) {
           afterChange={index => console.log('slide to', index)}
         >
           {bannerList.map(val => (
-            <div key={val.url} style={{width: '100%', height: 'auto'}}>
-              <img
+            <div key={val.url} style={{width: '100%', height: '237px'}}>
+              <Image
                 src={val.url}
-                alt=""
-                style={{ width: '100%', verticalAlign: 'top' }}
+                alt="BannerImg"
+                layout="fill"
               />
             </div>
           ))}
