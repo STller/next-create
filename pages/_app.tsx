@@ -22,26 +22,26 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    window.addEventListener(
-      "onorientationchange" in window ? "orientationchange" : "resize",
-      function () {
-        if (window.orientation === 180 || window.orientation === 0) {
-          const { clientHeight } = document.documentElement;
-          setMyAppHeight(clientHeight);
-          setSectionHeight(clientHeight - 92);
-        }
-        if (window.orientation === 90 || window.orientation === -90) {
-          const { clientHeight } = document.documentElement;
-          setMyAppHeight(clientHeight);
-          setSectionHeight(clientHeight - 92);
-        }
-      },
-      false
-    );
+    // window.addEventListener(
+    //   "onorientationchange" in window ? "orientationchange" : "resize",
+    //   function () {
+    //     if (window.orientation === 180 || window.orientation === 0) {
+    //       const { clientHeight } = document.documentElement;
+    //       setMyAppHeight(clientHeight);
+    //       setSectionHeight(clientHeight - 92);
+    //     }
+    //     if (window.orientation === 90 || window.orientation === -90) {
+    //       const { clientHeight } = document.documentElement;
+    //       setMyAppHeight(clientHeight);
+    //       setSectionHeight(clientHeight - 92);
+    //     }
+    //   },
+    //   false
+    // );
   }, []);
 
   return (
-    <div style={{ height: myAppHeight === 0 ? "100%" : `${myAppHeight}px` }}>
+    <div style={{ height: '100%' }}>
       <Head>
         <meta
           name="viewport"
