@@ -28,21 +28,21 @@ export default function Home({ bannerList }) {
   useEffect(() => {
     window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
       if (window.orientation === 180 || window.orientation === 0) { 
-        setImgHeight("454px");
+        setImgHeight("237px");
       } 
       if (window.orientation === 90 || window.orientation === -90 ){ 
-        setImgHeight("237px");
+        setImgHeight("454px");
       } 
     }, false); 
     return () => {
       window.removeEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
         if (window.orientation === 180 || window.orientation === 0) { 
-          setImgHeight("454px");
-        } 
-        if (window.orientation === 90 || window.orientation === -90 ){ 
           setImgHeight("237px");
         } 
-      }, false); 
+        if (window.orientation === 90 || window.orientation === -90 ){ 
+          setImgHeight("454px");
+        } 
+        }, false); 
     }
   }, []);
   return (
