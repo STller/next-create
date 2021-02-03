@@ -53,8 +53,8 @@ export default function Home({ bannerList }) {
 
       <div className="home">
         <div
-          style={{ borderBottom: "7.5px solid #ECECEC" }}
-          className="carousel"
+          style={{ borderBottom: "7.5px solid #ECECEC", height: imgHeight}}
+          className="carousel w-full"
         >
           <Carousel
             autoplay={false}
