@@ -1,5 +1,9 @@
+import PostForm from "../../components/postForm/index";
+
 export default function Brand() {
   return (
-    <div>Product</div>
-  )
+    <div>
+      <PostForm />
+    </div>
+  );
 }
