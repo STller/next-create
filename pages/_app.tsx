@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <>
+    <div style={{height: '100%'}}>
       <Head>
         <meta
           name="viewport"
@@ -125,6 +125,6 @@ export default function MyApp({ Component, pageProps }) {
           </footer>
         </div>
       </RecoilRoot>
-    </>
+    </div>
   );
 }
