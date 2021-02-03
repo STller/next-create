@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { RecoilRoot } from "recoil";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   const [selected, setSelected] = useState("home");
   const tabList = [
     { title: "home", label: "首页" },
@@ -13,6 +15,11 @@ export default function MyApp({ Component, pageProps }) {
     { title: "join", label: "加盟" },
     { title: "product", label: "产品" },
   ];
+
+  useEffect(() => {
+    const { pathname } = router;
+    setSelected([pathname.split('/')[1]].join(''));
+  }, []);
 
   return (
     <div>
