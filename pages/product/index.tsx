@@ -87,7 +87,7 @@ export default function Brand({ storesList }) {
           </div>
         </div>
         <div>
-          <div style={{ paddingTop: "27px", paddingBottom: "27px" }}>
+          {/* <div style={{ paddingTop: "27px", paddingBottom: "27px" }}>
             <Carousel autoplay slideWidth={0.4} cellSpacing={14}>
               {storesList.map((item) => (
                 <Image
@@ -100,7 +100,7 @@ export default function Brand({ storesList }) {
                 />
               ))}
             </Carousel>
-          </div>
+          </div> */}
         </div>
       </div>
 
