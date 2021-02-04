@@ -18,7 +18,7 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const { pathname } = router;
-    setSelected([pathname.split('/')[1]].join(''));
+    setSelected([pathname.split('/')[1]].join('') || 'home');
   }, []);
 
   return (
