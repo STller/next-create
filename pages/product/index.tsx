@@ -171,7 +171,7 @@ export default function Brand({ storesList }) {
         </div>
       </div>
 
-      <div style={{ borderBottom: "7px solid #ECECEC" }} className="px-4">
+      {/* <div style={{ borderBottom: "7px solid #ECECEC" }} className="px-4">
         <p className="mt-5 mb-4 font-extrabold text-lg">独特工艺</p>
         <p className="text-text text-sm leading-7">
           “三两”代表了我们对于食物和生活的态度，我们希望创造的不仅仅是美食，还有美好的生活。三两时间，一餐好食，“三两”希望
@@ -207,7 +207,7 @@ export default function Brand({ storesList }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <PostForm />
     </div>
