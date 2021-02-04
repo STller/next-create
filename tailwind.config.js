@@ -2,6 +2,10 @@ module.exports = {
   purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    flex: {
+      '25%': '1 1 25%',
+      'auto': '1 1 auto'
+    },
     colors: {
       'red': '#E42832',
       'white': '#FFFFFF',
