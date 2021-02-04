@@ -37,8 +37,8 @@ export default function Brand({ storesList }) {
           style={{ height: "40px" }}
           className="flex justify-evenly items-center"
         >
-          <li className="block text-sm">品牌背景</li>
-          <li className="block text-sm">品牌理念</li>
+          <li className="block text-base text-text">品牌背景</li>
+          <li className="block text-base text-text">品牌理念</li>
         </ul>
       </div>
 
