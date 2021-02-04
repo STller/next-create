@@ -104,7 +104,7 @@ export default function Brand({ storesList }) {
         </div>
       </div>
 
-      <div style={{ borderBottom: "7px solid #ECECEC" }} className="px-4">
+      {/* <div style={{ borderBottom: "7px solid #ECECEC" }} className="px-4">
         <p className="mt-7 mb-4 font-extrabold text-lg">精选好料</p>
         <p className="leading-7 text-text text-sm">
           好食材才有好味道，三两对于每份原料坚持不妥协、不断颠覆、不断死磕的态度，这种近乎偏执的要求也是心怀对食物、食材的敬畏之意。
@@ -169,7 +169,7 @@ export default function Brand({ storesList }) {
             <span style={{ writingMode: "vertical-lr" }}>营养健康</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* <div style={{ borderBottom: "7px solid #ECECEC" }} className="px-4">
         <p className="mt-5 mb-4 font-extrabold text-lg">独特工艺</p>
